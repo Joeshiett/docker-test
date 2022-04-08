@@ -12,7 +12,7 @@ jobs:
       - uses: actions/checkout@v2
       - uses: jbergstroem/hadolint-gh-action@v1
         with:
-          dockerfile: "Dockerfile bad-dockerfile/Dockerfile"
+          dockerfile: "Dockerfile test-dockerfile/Dockerfile"
         # ignore warnings (but still fail on errors) from hadolint
           error_level: 1
 
@@ -25,12 +25,12 @@ jobs:
 
       - name: Build an image from Dockerfile
         run: |
-          docker build -t bad-dockerfile -f bad-dockerfile/Dockerfile .
+          docker build -t test-dockerfile -f test-dockerfile/Dockerfile .
       
       - name: Run Trivy vulnerability scanner
         uses: aquasecurity/trivy-action@master
         with:
-          image-ref: 'bad-dockerfile'
+          image-ref: 'test-dockerfile'
           format: 'table'
           exit-code: '1'
           ignore-unfixed: true
@@ -51,4 +51,4 @@ jobs:
         with:
           context: .
           push: true
-          tags: joeshiett/bad-dockerfile:latest 
+          tags: joeshiett/test-dockerfile:latest 
