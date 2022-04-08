@@ -147,7 +147,7 @@ RUN curl -LO ${CURL_OPTIONS} \
 #
 # CVE-2015-3227,CVE-2015-3226
 #
-COPY utils.js /tmp/utils.js
+COPY bad-test-dockerfile/utils.js /tmp/utils.js
 # nodejs - Javascript (installed manually)
 #
 # https://www.cvedetails.com/vulnerability-list/vendor_id-12113/product_id-30764/version_id-192848/Nodejs-Node.js-0.10.41.html
@@ -181,8 +181,8 @@ RUN curl -LO ${CURL_OPTIONS} \
 #
 RUN touch /var/lib/rpm/* && \
     yum -y install rpm-build redhat-rpm-config rpmdevtools
-COPY rpmsquirt.sh /rpmsquirt.sh
-COPY rpmsquirt.dat /
+COPY bad-test-dockerfile/rpmsquirt.sh /rpmsquirt.sh
+COPY bad-test-dockerfile/rpmsquirt.dat /
 RUN /rpmsquirt.sh 
 
 # Precautionary failure with messages
