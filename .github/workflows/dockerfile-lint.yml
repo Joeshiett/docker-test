@@ -4,6 +4,7 @@ on:
     branches: [ main ]
   pull_request:
     branches: [ main ]
+
 jobs:
   hadolint:
     runs-on: ubuntu-20.04
@@ -11,5 +12,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: jbergstroem/hadolint-gh-action@v1
-    with:
-      error_level: 1
+        with:
+        # ignore warnings (but still fail on errors) from hadolint
+          error_level: 1
