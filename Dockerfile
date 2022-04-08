@@ -8,6 +8,6 @@ COPY requirements.txt requirements.txt
 
 RUN pip3 install -r --no-cache-dir requirements.txt
 
-COPY . .
+ADD . .
 
 CMD [ "python3", "-m" , "flask", "run", "--host=0.0.0.0"]
