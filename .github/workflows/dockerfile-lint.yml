@@ -15,8 +15,10 @@ jobs:
           # dockerfile: "Dockerfile test/Dockerfile"
         # ignore warnings (but still fail on errors) from hadolint
           error_level: 1
+
   docker:
-    runs-on: ubuntu-latest
+    needs: hadolint
+    runs-on: ubuntu-20.04
     steps:
       - name: Checkout
         uses: actions/checkout@v2
