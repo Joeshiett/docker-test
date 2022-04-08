@@ -25,12 +25,12 @@ jobs:
 
       - name: Build an image from Dockerfile
         run: |
-          docker build . 
+          docker build . -t bad-dockerfile -f bad-dockerfile/Dockerfile
       
       - name: Run Trivy vulnerability scanner
         uses: aquasecurity/trivy-action@master
         with:
-          image-ref: 'python-webapp'
+          image-ref: 'bad-dockerfile'
           format: 'table'
           exit-code: '1'
           ignore-unfixed: true
@@ -51,4 +51,4 @@ jobs:
         with:
           context: .
           push: true
-          tags: joeshiett/python-webapp:latest 
+          tags: joeshiett/bad-dockerfile:latest 
