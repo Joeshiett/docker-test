@@ -1,0 +1,13 @@
+name: Dockerfile Lint
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+jobs:
+  hadolint:
+    runs-on: ubuntu-20.04
+    name: "Hadolint"
+    steps:
+      - uses: actions/checkout@v2
+      - uses: jbergstroem/hadolint-gh-action@v1
