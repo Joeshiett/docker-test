@@ -14,7 +14,7 @@ jobs:
         with:
           dockerfile: "Dockerfile bad-test-dockerfile/Dockerfile"
         # ignore warnings (but still fail on errors) from hadolint
-          error_level: 1
+          # error_level: 1
 
   docker:
     needs: hadolint
